@@ -10,8 +10,8 @@ package courseapp;
  */
 import java.sql.SQLException;
 
-public class CourseApp {
-
+public class CourseApp 
+{
     public static void main(String[] args) throws SQLException 
     {
         View view = new View();
