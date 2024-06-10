@@ -30,11 +30,6 @@ public class View extends JFrame implements Observer
     private JButton loginButton = new JButton("Log in");
     public JLabel message = new JLabel("Welcome!", JLabel.CENTER);
     
-    //For mainMenu page
-    private JPanel mainMenuPanel = new JPanel();
-    private JLabel workingText = new JLabel("This is the new page");
-    
-    
     private boolean started = false; 
     
     //Constructor 
@@ -55,12 +50,14 @@ public class View extends JFrame implements Observer
     
     public void mainMenu()
     {
-        this.setSize(600,600);
-        this.mainMenuPanel.add(workingText);
+        JFrame frame = new JFrame();
+        MainMenuPanel mainPanel = new MainMenuPanel(frame);
         
+        this.setLocation(500,300);
+        this.setSize(800, 400); 
         this.getContentPane().removeAll();
-        mainMenuPanel.setVisible(true);
-        this.add(mainMenuPanel);
+        mainPanel.setVisible(true);
+        this.add(mainPanel);
         this.revalidate();
         this.repaint();
     }
