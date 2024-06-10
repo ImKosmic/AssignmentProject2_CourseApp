@@ -5,6 +5,8 @@
 package courseapp;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
@@ -30,6 +32,10 @@ public class View extends JFrame implements Observer
     private JButton loginButton = new JButton("Log in");
     public JLabel message = new JLabel("Welcome!", JLabel.CENTER);
     
+    //For MainPage
+    public JButton ExitButton = new JButton("EXIT");
+    private JPanel MainMenuPanel = new JPanel();
+    
     private boolean started = false; 
     
     //Constructor 
@@ -50,14 +56,17 @@ public class View extends JFrame implements Observer
     
     public void mainMenu()
     {
-        JFrame frame = new JFrame();
-        MainMenuPanel mainPanel = new MainMenuPanel(frame);
+        this.setLayout(new BorderLayout());
+        this.MainMenuPanel.add(ExitButton);
+        this.MainMenuPanel.setBackground(Color.LIGHT_GRAY);
+        this.MainMenuPanel.setPreferredSize(new Dimension(1000,100));
+        
         
         this.setLocation(500,300);
         this.setSize(800, 400); 
         this.getContentPane().removeAll();
-        mainPanel.setVisible(true);
-        this.add(mainPanel);
+        this.setVisible(true);
+        this.add(MainMenuPanel);
         this.revalidate();
         this.repaint();
     }
@@ -65,6 +74,7 @@ public class View extends JFrame implements Observer
   
     public void addActionListener(ActionListener listener)
     {
+        this.ExitButton.addActionListener(listener);
         this.loginButton.addActionListener(listener);
     }
     
@@ -80,13 +90,11 @@ public class View extends JFrame implements Observer
             this.message.setText("Invalid username or password.");
         }
         
-        else 
+        else if (data.loginFlag)
         {
            this.mainMenu();
            this.started = true;
         }
-        
-       
     }
 }
 

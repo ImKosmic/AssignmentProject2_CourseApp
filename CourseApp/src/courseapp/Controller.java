@@ -22,28 +22,37 @@ public class Controller implements ActionListener
     {
         this.view = view;
         this.model = model;
-        this.view.addActionListener((ActionListener) this);
+        this.view.addActionListener(this);
     }
     
     @Override
     public void actionPerformed(ActionEvent e)
     {
         String command = e.getActionCommand(); 
-        switch (command)
-        {
+        System.out.println("Action Command: " + command);
+        
+        switch (command){
             case "Log in":
+            {
                 // Login button 
+                System.out.println("Log in button pressed");
                 String username = this.view.unInput.getText(); 
                 String password = this.view.pwInput.getText(); 
-            {
-                try 
                 {
-                    this.model.checkName(username, password); 
-                } 
-                catch (SQLException ex) 
-                {
-                    System.out.println(ex);
+                    try 
+                    {
+                        this.model.checkName(username, password); 
+                    } 
+                    catch (SQLException ex) {
+                        System.out.println(ex);
+                    }
                 }
+            }
+            break;
+            
+            case "EXIT":
+            {
+                System.out.println("The exit button works");
             }
             break;
         }

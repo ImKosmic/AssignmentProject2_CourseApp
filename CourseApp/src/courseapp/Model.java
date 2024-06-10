@@ -29,13 +29,7 @@ public class Model extends Observable
     {
         this.username = username;
         this.data = this.db.checkName(username, password);
-        this.setChanged(); //Essential. To mark this observable instance has been modified.
+        this.setChanged(); 
         this.notifyObservers(this.data);
     }
-    
-    
-    
-  
-
-    
 }

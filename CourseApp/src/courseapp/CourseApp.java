@@ -17,6 +17,6 @@ public class CourseApp {
         View view = new View();
         Model model = new Model();
         Controller controller = new Controller(view, model);
-        model.addObserver(view); //Build connection between the view and the model
+        model.addObserver(view); 
     }
 }
