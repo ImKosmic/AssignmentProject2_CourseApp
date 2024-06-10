@@ -53,6 +53,23 @@ public class Controller implements ActionListener
             case "EXIT":
             {
                 System.out.println("The exit button works");
+                this.model.checkFlag();
+            }
+            break;
+            
+            //This is just a button to enter the Course menu
+            //It will change the Course flag to true to indicate to View 
+            //to update the frame to new components 
+            case "Choose your papers":
+            {
+                System.out.println("The Choose your papers button works");
+                this.model.changeToCourse();
+            }
+            break;
+            
+            case "Remove your chosen papers":
+            {
+                System.out.println("The Remove your chosen papers button works");
             }
             break;
         }

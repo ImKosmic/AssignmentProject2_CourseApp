@@ -32,4 +32,21 @@ public class Model extends Observable
         this.setChanged(); 
         this.notifyObservers(this.data);
     }
+    
+    public void changeToCourse()
+    {
+        this.data.CourseFlag = true;
+        this.setChanged(); 
+        this.notifyObservers(this.data);
+    }
+    
+    public void checkFlag()
+    {
+        if (this.data.CourseFlag == true)
+        {
+            this.data.CourseFlag = false;
+        }
+        this.setChanged(); 
+        this.notifyObservers(this.data);
+    }
 }

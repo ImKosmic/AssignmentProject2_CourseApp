@@ -41,7 +41,9 @@ public class View extends JFrame implements Observer
     private JPanel MainMenuPanel = new JPanel();
     public JTextArea MainMenuInfo = new JTextArea();
     
-    private boolean started = false; 
+    //For Course page
+    private JPanel CoursePanel = new JPanel();
+    private JLabel check = new JLabel("This page works"); 
     
     //Constructor 
     public View()
@@ -65,12 +67,17 @@ public class View extends JFrame implements Observer
         //Changing the size and location of the GUI
         this.setLocation(500,300);
         this.setSize(800, 400); 
-        this.setLayout(new BorderLayout());
         
         ExitButton.setBounds(0, 0, 100, 50);
         ExitButton.setBackground(Color.RED);
+        
         PaperButton.setBounds(100, 100, 150, 100); //(x, y, x,y)
+        
         RemovePaperButton.setBounds(300, 100, 200, 100);
+        
+        MainMenuInfo.setBounds(580, 10, 200, 330);
+        MainMenuInfo.setText("Will add a variable later");
+        MainMenuInfo.setEditable(false);
         
         MainMenuPanel.add(MainMenuInfo);
         MainMenuPanel.add(ExitButton);
@@ -87,9 +94,27 @@ public class View extends JFrame implements Observer
         this.repaint();
     }
     
+    public void CourseMenu()
+    {
+        CoursePanel.add(check);
+        ExitButton.setBounds(0, 0, 100, 50);
+        ExitButton.setBackground(Color.RED);
+        CoursePanel.add(ExitButton);
+        CoursePanel.setBackground(Color.GRAY);
+        CoursePanel.setLayout(null);
+        
+        this.getContentPane().removeAll();
+        this.add(CoursePanel);
+        this.setVisible(true);
+        this.revalidate();
+        this.repaint();
+    }
+    
   
     public void addActionListener(ActionListener listener)
     {
+        this.RemovePaperButton.addActionListener(listener);
+        this.PaperButton.addActionListener(listener);
         this.ExitButton.addActionListener(listener);
         this.loginButton.addActionListener(listener);
     }
@@ -106,10 +131,19 @@ public class View extends JFrame implements Observer
             this.message.setText("Invalid username or password.");
         }
         
-        else if (data.loginFlag)
+        if (data.loginFlag)
         {
            this.mainMenu();
-           this.started = true;
+        }
+        
+        if (data.CourseFlag)
+        {
+            this.CourseMenu();
+        }
+        
+        if (!data.CourseFlag)
+        {
+            this.mainMenu();
         }
     }
 }
