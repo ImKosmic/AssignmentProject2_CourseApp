@@ -67,9 +67,11 @@ public class Controller implements ActionListener
             }
             break;
             
+            //Same thing as above, but to enter Remove Menu instead.
             case "Remove your chosen papers":
             {
                 System.out.println("The Remove your chosen papers button works");
+                this.model.changeToRemove();
             }
             break;
         }
