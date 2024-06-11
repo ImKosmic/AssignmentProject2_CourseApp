@@ -13,4 +13,5 @@ public class Data
     boolean loginFlag = false;
     boolean quitFlag = false;
     boolean CourseFlag = false;
+    boolean removeFlag = false;
 }
